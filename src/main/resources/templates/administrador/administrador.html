@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registrar Evento - Admin</title>
+  <link rel="stylesheet" href="/src/main/resources/static/css/index.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Registrar Nuevo Evento</h1>
+    <nav class="admin-nav">
+      <a href="admin-eventos.html">Eventos</a>
+      <a href="admin-artistas.html">Artistas</a>
+      <a href="admin-boletas.html">Boletas</a>
+      <button id="logoutBtn" class="btn logout">Cerrar Sesión</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Instrucciones -->
+    <div class="instructions">
+      <p>Completa todos los campos. El evento debe tener al menos una localidad y un artista.</p>
+    </div>
+
+    <!-- Sección 1: Datos del evento -->
+    <section class="card">
+      <h2>Datos Generales del Evento</h2>
+      <form id="eventoForm">
+        <input type="text" id="nombreEvento" placeholder="Nombre del evento (ej. Feria de Cali)" required />
+        <textarea id="descripcionEvento" placeholder="Describe el evento, actividades, etc." required></textarea>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Departamento</label>
+            <select id="departamento" required>
+              <option value="">Selecciona un departamento</option>
+              <!-- Se llenará dinámicamente -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Municipio</label>
+            <select id="municipio" required disabled>
+              <option value="">Primero elige un departamento</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Fecha y hora de inicio</label>
+            <input type="date" id="fechaInicio" required />
+            <input type="time" id="horaInicio" required />
+          </div>
+          <div class="form-group">
+            <label>Fecha y hora de fin</label>
+            <input type="date" id="fechaFin" required />
+            <input type="time" id="horaFin" required />
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- Sección 2: Localidades -->
+    <section class="card">
+      <h2>Localidades Disponibles</h2>
+      <p>Agrega las zonas del evento con su precio y capacidad.</p>
+      <form id="localidadForm" class="form-inline">
+        <input type="text" id="nombreLocalidad" placeholder="Nombre (ej. VIP, Platea)" required />
+        <input type="number" id="precioLocalidad" placeholder="Precio por boleta ($)" min="0" step="1000" required />
+        <input type="number" id="cantidadLocalidad" placeholder="Cantidad de boletas" min="1" required />
+        <button type="submit" class="btn small primary">+ Agregar</button>
+      </form>
+
+      <table class="table" id="tablaLocalidades">
+        <thead>
+          <tr><th>Nombre</th><th>Precio</th><th>Boletas</th><th>Acciones</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Sección 3: Artistas -->
+    <section class="card">
+      <h2>Artistas Participantes</h2>
+      <p>Puedes usar artistas existentes o registrar nuevos desde aquí.</p>
+
+      <!-- Formulario para nuevo artista -->
+      <details class="artist-form-toggle">
+        <summary>Registrar nuevo artista</summary>
+        <form id="nuevoArtistaForm" class="form-inline artist-form">
+          <input type="text" id="nombreNuevoArtista" placeholder="Nombre del artista o grupo" required />
+          <input type="text" id="generoNuevoArtista" placeholder="Género musical" required />
+          <input type="text" id="ciudadNuevoArtista" placeholder="Ciudad de origen" required />
+          <button type="submit" class="btn small success">Agregar a lista</button>
+        </form>
+      </details>
+
+      <!-- Selección de artistas -->
+      <div class="artist-selector">
+        <select id="selectArtista" multiple size="6">
+          <!-- Se llenará con artistas iniciales + nuevos -->
+        </select>
+        <button id="btnAgregarArtista" class="btn small">Agregar Seleccionados al Evento</button>
+      </div>
+
+      <table class="table" id="tablaArtistasEvento">
+        <thead><tr><th>Artista</th><th>Género</th><th>Ciudad</th><th>Acciones</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- Botón final -->
+    <div class="form-footer">
+      <button id="btnGuardarEvento" class="btn primary large">Guardar Evento</button>
+    </div>
+  </main>
+
+  <script src="/src/main/resources/static/js/index.js"></script>
+</body>
+</html>

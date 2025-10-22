@@ -1,0 +1,238 @@
+/* admin.css - Versión mejorada */
+
+:root {
+  --primary: #1a365d;
+  --secondary: #2b6cb0;
+  --success: #2f855a;
+  --danger: #e53e3e;
+  --light: #f8fafc;
+  --gray: #718096;
+  --border: #e2e8f0;
+  --card-bg: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: #f0f4f8;
+  color: var(--primary);
+  line-height: 1.6;
+}
+
+.header {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.admin-nav {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.admin-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.admin-nav a:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.instructions {
+  background-color: #ebf8ff;
+  border-left: 4px solid var(--secondary);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0 6px 6px 0;
+  color: var(--gray);
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 1.2rem;
+  color: var(--gray);
+}
+
+.form-group {
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.2);
+}
+
+.form-row {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.form-inline {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  align-items: end;
+  margin: 1rem 0 1.5rem;
+}
+
+.form-inline input {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 130px;
+}
+
+.artist-form-toggle {
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f8fafc;
+}
+
+.artist-form-toggle summary {
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+.artist-form-toggle[open] summary {
+  margin-bottom: 1rem;
+}
+
+.artist-form {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.artist-selector {
+  margin: 1.2rem 0;
+}
+
+.artist-selector select {
+  width: 100%;
+  height: 140px;
+  margin-bottom: 0.8rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table th,
+.table td {
+  padding: 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.table th {
+  background-color: #edf2f7;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.btn.primary { background: var(--success); color: white; }
+.btn.success { background: #38a169; color: white; }
+.btn.danger { background: var(--danger); color: white; }
+.btn.small { padding: 0.45rem 0.9rem; font-size: 0.9rem; }
+.btn.large { padding: 0.9rem 2rem; font-size: 1.1rem; }
+
+.form-footer {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row,
+  .form-inline {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .admin-nav {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .header h1 {
+    font-size: 1.3rem;
+  }
+}
