@@ -240,19 +240,19 @@ document.addEventListener('DOMContentLoaded', function() {
         localidades.forEach((localidad, index) => {
             const nombreInput = document.createElement('input');
             nombreInput.type = 'hidden';
-            nombreInput.name = `nombresLocalidades[${index}]`;
+            nombreInput.name = 'nombresLocalidades';
             nombreInput.value = localidad.nombre;
             form.appendChild(nombreInput);
 
             const precioInput = document.createElement('input');
             precioInput.type = 'hidden';
-            precioInput.name = `preciosLocalidades[${index}]`;
+            precioInput.name = 'preciosLocalidades';
             precioInput.value = localidad.precio;
             form.appendChild(precioInput);
 
             const cantidadInput = document.createElement('input');
             cantidadInput.type = 'hidden';
-            cantidadInput.name = `cantidadesLocalidades[${index}]`;
+            cantidadInput.name = 'cantidadesLocalidades';
             cantidadInput.value = localidad.cantidad;
             form.appendChild(cantidadInput);
         });
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
         artistasSeleccionados.forEach((artista, index) => {
             const artistaInput = document.createElement('input');
             artistaInput.type = 'hidden';
-            artistaInput.name = `artistasIds[${index}]`;
+            artistaInput.name = 'artistasIds';
             artistaInput.value = artista.id;
             form.appendChild(artistaInput);
         });

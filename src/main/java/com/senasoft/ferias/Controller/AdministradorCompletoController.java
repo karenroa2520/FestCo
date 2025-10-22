@@ -23,13 +23,13 @@ import com.senasoft.ferias.Entity.Evento;
 import com.senasoft.ferias.Entity.Localidad;
 import com.senasoft.ferias.Entity.Municipio;
 import com.senasoft.ferias.Repository.Administrador_Repository;
-import com.senasoft.ferias.service.EventoCompleto_Service;
+import com.senasoft.ferias.service.Evento_Service;
 
 @Controller
 public class AdministradorCompletoController {
 
     @Autowired
-    private EventoCompleto_Service eventoCompletoService;
+    private Evento_Service eventoCompletoService;
     
     @Autowired
     private Administrador_Repository administradorRepository;
@@ -60,6 +60,13 @@ public class AdministradorCompletoController {
             @RequestParam(required = false) Long[] artistasIds) {
 
         try {
+            System.out.println("=== DEBUG: Creando evento ===");
+            System.out.println("Nombre: " + nombreEvento);
+            System.out.println("Nombres localidades: " + (nombresLocalidades != null ? java.util.Arrays.toString(nombresLocalidades) : "null"));
+            System.out.println("Precios localidades: " + (preciosLocalidades != null ? java.util.Arrays.toString(preciosLocalidades) : "null"));
+            System.out.println("Cantidades localidades: " + (cantidadesLocalidades != null ? java.util.Arrays.toString(cantidadesLocalidades) : "null"));
+            System.out.println("Artistas IDs: " + (artistasIds != null ? java.util.Arrays.toString(artistasIds) : "null"));
+            
             // Crear el evento
             Evento evento = new Evento();
             evento.setNombre(nombreEvento);
@@ -80,6 +87,7 @@ public class AdministradorCompletoController {
             // Crear cantidades de boletas
             List<Cantidad_Boletas> cantidadBoletas = new ArrayList<>();
             if (nombresLocalidades != null && preciosLocalidades != null && cantidadesLocalidades != null) {
+                System.out.println("Procesando " + nombresLocalidades.length + " localidades");
                 for (int i = 0; i < nombresLocalidades.length; i++) {
                     Cantidad_Boletas cantidad = new Cantidad_Boletas();
                     cantidad.setCantidad(cantidadesLocalidades[i]);
@@ -87,13 +95,16 @@ public class AdministradorCompletoController {
                     
                     // Buscar o crear localidad
                     final String nombreLocalidad = nombresLocalidades[i];
+                    System.out.println("Procesando localidad: " + nombreLocalidad);
                     Optional<Localidad> localidad = eventoCompletoService.getAllLocalidades().stream()
                             .filter(l -> l.getLocalidad().equals(nombreLocalidad))
                             .findFirst();
                     
                     if (localidad.isPresent()) {
+                        System.out.println("Localidad encontrada: " + localidad.get().getId());
                         cantidad.setLocalidad(localidad.get());
                     } else {
+                        System.out.println("Creando nueva localidad: " + nombreLocalidad);
                         Localidad nuevaLocalidad = new Localidad();
                         nuevaLocalidad.setLocalidad(nombreLocalidad);
                         Localidad localidadGuardada = eventoCompletoService.saveLocalidad(nuevaLocalidad);
@@ -102,6 +113,8 @@ public class AdministradorCompletoController {
                     
                     cantidadBoletas.add(cantidad);
                 }
+            } else {
+                System.out.println("No hay localidades para procesar");
             }
 
             // Obtener artistas seleccionados
