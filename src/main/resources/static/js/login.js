@@ -17,12 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Opcional: Validación básica al enviar
-  document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert(`Formulario de "${form.id.replace('-form', '')}" enviado.`);
-      // Aquí iría tu lógica real (fetch, etc.)
-    });
-  });
+  // Los formularios ahora se envían directamente al servidor
+  // No necesitamos prevenir el comportamiento por defecto
 });

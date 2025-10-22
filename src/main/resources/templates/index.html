@@ -1,64 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FestCo</title>
-
-  <link rel="stylesheet" th:href="@{/css/esilos_pagina_principal.css}" href="/src/main/resources/static/css/pagina_prin.css">
-
+  <title>FestCo - Eventos</title>
+  <link rel="stylesheet" th:href="@{/css/pagina_prin.css}" href="/src/main/resources/static/css/pagina_prin.css">
 </head>
 <body>
   <header>
     <div class="logo">
-
-      <img th:src="@{/img/222.png}" src="/src/main/resources/static/img/logo.png" alt="Logo">
-
-      <span><b>Make it happen</b></span>
+      <img th:src="@{/img/logo.png}" src="/src/main/resources/static/img/logo.png" alt="Logo">
+      <span><b>FestCo</b></span>
     </div>
     <nav>
-      <a href="#" class="active">Inicio</a>
+      <a href="/" class="active">Inicio</a>
       <form action="/buscar" method="get">
-         <input type="search" id="buscar" name="q" placeholder="Buscar...">
+         <input type="search" id="buscar" name="q" placeholder="Buscar eventos...">
          <input type="submit" value="Buscar">
       </form>
-      <!-- Enlace al controlador que sirve la página index -->
-      <a th:href="@{/}" href="/src/main/resources/templates/usuario/usuario.html">Iniciar Sesion</a>
-
+      <a th:href="@{/login}" href="/login">Iniciar Sesión</a>
+      <a th:href="@{/administrador}" href="/administrador">Admin</a>
     </nav>
   </header>
 
-  <!-- Aquí agregamos el contenedor para los foros -->
-        <section id="foros">
-            <div class="foro-lista" th:each="f : ${foro}">
-                <div class="foro-item">
-                    <div class="card">
-                        <div class="card-header">
-                            <img class="card-img" th:src="@{'/foro/imagen/' + ${f.id}}" alt="Imagen del Foro">
-                            <h3 th:text="${f.tema}">Título del Foro</h3>
-                        </div>
-                        <div class="card-body">
-                            <p class="author"><strong>Creado por:</strong> <span th:text="${f.nombre}">Nombre del Creador</span></p>
-                            <p class="date"><strong>Fecha de creación:</strong> <span th:text="${f.fecha}">Fecha del Foro</span></p>
-                            <div class="foro-contenido" style="display: none;" th:text="${f.contenido}"></div>
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn-comentar"
-                                    th:data-id-foro="${f.id}"
-                                    th:data-tema="${f.tema}"
-                                    th:data-nombre="${f.nombre}"
-                                    th:data-fecha="${f.fecha}"
-                                    th:data-contenido="${f.contenido}"
-                                    th:data-imagen="@{'/foro/imagen/' + ${f.id}}"
-                                    onclick="abrirForo(this)">Abrir Foro</button>
+  <main class="container">
+    <h1>Eventos Disponibles</h1>
+    
+    <!-- Contenedor para los eventos -->
+    <section id="eventos" class="eventos-grid">
+      <div th:each="evento : ${eventos}" class="evento-card">
+        <div class="card">
+          <div class="card-header">
+            <img class="card-img" th:src="@{/img/fiesta1.jpg}" alt="Imagen del Evento">
+            <h3 th:text="${evento.nombre}">Nombre del Evento</h3>
+          </div>
+          <div class="card-body">
+            <p class="description" th:text="${evento.descripcion}">Descripción del evento</p>
+            <p class="location"><strong>Ubicación:</strong> 
+              <span th:if="${evento.municipio != null}" th:text="${evento.municipio.municipio}">Municipio</span>
+            </p>
+            <p class="date"><strong>Fecha inicio:</strong> 
+              <span th:text="${#temporals.format(evento.fechaInicio, 'dd/MM/yyyy')}">Fecha</span>
+            </p>
+            <p class="date"><strong>Fecha fin:</strong> 
+              <span th:text="${#temporals.format(evento.fechaFin, 'dd/MM/yyyy')}">Fecha</span>
+            </p>
+            <p class="time"><strong>Horario:</strong> 
+              <span th:text="${#temporals.format(evento.horaInicio, 'HH:mm')}">Hora inicio</span> - 
+              <span th:text="${#temporals.format(evento.horaFin, 'HH:mm')}">Hora fin</span>
+            </p>
+            <div class="artistas" th:if="${evento.artistas != null and !evento.artistas.empty}">
+              <strong>Artistas:</strong>
+              <ul>
+                <li th:each="artista : ${evento.artistas}" th:text="${artista.nombre}">Artista</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn-primary" th:onclick="'verDetalles(' + ${evento.id} + ')'">Ver Detalles</button>
+            <button class="btn-secondary" th:onclick="'comprarBoletas(' + ${evento.id} + ')'">Comprar Boletas</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-                </form>
-            </div>
-        </div> 
+    <!-- Mensaje cuando no hay eventos -->
+    <div th:if="${eventos == null or eventos.empty}" class="no-events">
+      <h2>No hay eventos disponibles en este momento</h2>
+      <p>Vuelve pronto para ver los próximos eventos.</p>
+    </div>
+  </main>
+
+  <script>
+    function verDetalles(eventoId) {
+      // Implementar lógica para ver detalles del evento
+      alert('Ver detalles del evento: ' + eventoId);
+    }
+
+    function comprarBoletas(eventoId) {
+      // Implementar lógica para comprar boletas
+      alert('Comprar boletas para el evento: ' + eventoId);
+    }
+  </script>
 </body>
 </html>

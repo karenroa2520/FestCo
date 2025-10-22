@@ -62,10 +62,7 @@ public class EventoCompleto_ServiceImpl implements EventoCompleto_Service {
 
     @Override
     public List<Municipio> getMunicipiosByDepartamento(Long departamentoId) {
-        return municipioRepository.findAll().stream()
-                .filter(municipio -> municipio.getDepartamento() != null && 
-                        municipio.getDepartamento().getId().equals(departamentoId))
-                .toList();
+        return municipioRepository.findByDepartamentoId(departamentoId);
     }
 
     @Override
