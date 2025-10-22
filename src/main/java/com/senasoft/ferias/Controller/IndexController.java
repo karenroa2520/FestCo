@@ -22,9 +22,4 @@ public class IndexController {
         model.addAttribute("eventos", eventos);
         return "index";
     }
-
-    @GetMapping("/login")
-    public String login() {
-        return "usuario/usuario";
-    }
 }
