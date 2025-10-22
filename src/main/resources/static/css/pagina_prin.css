@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #bb02f3;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  background: #f8fafc;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 0 0 30px 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 75px;
+  height: 75px;
+}
+
+.logo span {
+  color: #1a365d;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+nav a {
+  margin: 0 18px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a.active, nav a:hover {
+  color: #ff9100;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px 100px;
+  background: #fff;
+  border-radius: 20px;
+  margin: 50px auto;
+  width: 85%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.info {
+  max-width: 480px;
+}
+
+.info h1 {
+  font-size: 2.8rem;
+  color: #077fff;
+  line-height: 1.2;
+}
+
+.info p {
+  color: #555;
+  margin-top: 15px;
+  line-height: 1.5;
+}
+
+button {
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  padding: 12px 35px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 25px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #005f8c;
+}
+
+.address {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(2, 140px);
+  grid-template-rows: repeat(2, 140px);
+  gap: 20px;
+  position: relative;
+}
+
+.circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #00b4d8;
+  background: #fff;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c1 { grid-column: 1; grid-row: 1; }
+.c2 { grid-column: 2; grid-row: 1 / span 2; }
+.c3 { grid-column: 1; grid-row: 2; }

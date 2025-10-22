@@ -5,23 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FestCo</title>
 
-  <link rel="stylesheet" th:href="@{/css/esilos_pagina_principal.css}" href="/css/esilos_pagina_principal.css">
+  <link rel="stylesheet" th:href="@{/css/esilos_pagina_principal.css}" href="/src/main/resources/static/css/pagina_prin.css">
 
 </head>
 <body>
   <header>
     <div class="logo">
 
-      <img th:src="@{/img/222.png}" src="/img/222.png" alt="Logo">
+      <img th:src="@{/img/222.png}" src="/src/main/resources/static/img/logo.png" alt="Logo">
 
-      <span><b>Intelligence for health</b></span>
+      <span><b>Make it happen</b></span>
     </div>
     <nav>
       <a href="#" class="active">Inicio</a>
-      <a href="#">Acerca de Nosotros</a>
-      <a href="#">Trabajos</a>
-      <a href="#">Contacto</a>
-
       <!-- Enlace al controlador que sirve la página index -->
       <a th:href="@{/}" href="/">Iniciar Sesion</a>
 
@@ -29,21 +25,7 @@
   </header>
 
   <section class="hero">
-    <div class="info">
-      <h1>Te ayudamos a CRECER</h1>
-      <p>Proveemos servicios de tecnología que ayudan a las personas en las organizaciones a optimizar sus procesos y ser más eficientes.</p>
-      <a href="https://r-fast.com/">
-          <button>Mas Informacion</button>
-      </a> 
-      <p class="address">Av. 3i Nte. #45-29, Vipasa, Cali, Valle del Cauca</p>
-    </div>
+    <div class="cards">
 
-    <div class="images">
-      <div class="circle c1"><img th:src="@{/img/11.jpg}" src="/img/11.jpg" alt=""></div>
-      <div class="circle c2"><img th:src="@{/img/2.jpg}" src="/img/2.jpg" alt=""></div>
-      <div class="circle c3"><img th:src="@{/img/3.webp}" src="/img/3.webp" alt=""></div>
-
-    </div>
-  </section>
 </body>
 </html>
