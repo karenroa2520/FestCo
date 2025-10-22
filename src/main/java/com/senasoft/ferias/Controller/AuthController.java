@@ -73,7 +73,7 @@ public class AuthController {
             usuario.setNumDocumento(docNumber);
             
             // Buscar tipo de documento
-            Optional<Tipo_Documento> tipoDoc = tipoDocumentoRepository.findById(docType);
+            Optional<Tipo_Documento> tipoDoc = tipoDocumentoRepository.findById(Long.parseLong(docType));
             tipoDoc.ifPresent(usuario::setTipoDocumento);
             
             // Separar nombre y apellidos

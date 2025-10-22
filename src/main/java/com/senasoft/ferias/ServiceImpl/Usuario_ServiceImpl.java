@@ -37,9 +37,7 @@ public class Usuario_ServiceImpl implements Usuario_Service {
 
     @Override
     public Optional<Usuario> getUsuarioByCorreo(String correo) {
-        return usuarioRepository.findAll().stream()
-                .filter(u -> u.getCorreo().equals(correo))
-                .findFirst();
+        return usuarioRepository.findByCorreo(correo);
     }
 
     @Override

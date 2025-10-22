@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -174,6 +175,6 @@ public class EventoCompleto_ServiceImpl implements EventoCompleto_Service {
     public List<Cantidad_Boletas> getCantidadBoletasByEvento(Long eventoId) {
         return cantidadBoletasRepository.findAll().stream()
                 .filter(cb -> cb.getEvento() != null && cb.getEvento().getId().equals(eventoId))
-                .toList();
+                .collect(Collectors.toList());
     }
 }
