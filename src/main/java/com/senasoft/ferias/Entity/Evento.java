@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -42,11 +43,12 @@ public class Evento {
     @Column(name="hora_fin")
     private Time horaFin;
     
-    @OneToOne
-    @JoinColumn(name = "administrador", referencedColumnName = "num_documento")
+    @ManyToOne
+    @JoinColumn(name = "id_administrador", referencedColumnName = "num_documento")
     private Administrador administrador;
 
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "id_municipio")
     private Municipio municipio;
 

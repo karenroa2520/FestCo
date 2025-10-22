@@ -36,10 +36,10 @@ public class WebEventoController {
         this.administradorRepository = administradorRepository;
     }
 
-    @GetMapping({"/", "/index"})
+    @GetMapping("/administrador")
     public String index(Model model) {
         model.addAttribute("municipios", municipioRepository.findAll());
-        return "index";
+        return "administrador/administrador";
     }
 
     @GetMapping("/eventos/{id}/editar")
