@@ -7,28 +7,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="municipio")
+@Table(name = "localidad")
 @Data
-public class Municipio {
+public class Localidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="municipio")
-    private String municipio;
+    @Column(name = "localidada")
+    private String localidad;
 
-    @ManyToOne
-    @JoinColumn(name = "id_departamento")
-    private Departamento departamento;
+    @OneToMany(mappedBy = "localidad")
+    private List<Cantidad_Boletas> cantidadBoletas;
 
-    @OneToMany(mappedBy = "municipio")
-    private List<Evento> eventos;
+    @OneToMany(mappedBy = "localidad")
+    private List<Boletas> boletas;
 }

@@ -1,5 +1,5 @@
 create database ferias;
-
+drop database ferias;
 use ferias;
 
 create table Tipo_Documento(
@@ -34,10 +34,17 @@ create table localidad(
 	localidada varchar(20)
 );
 
+create table Tipo_Evento(
+	id bigint primary key auto_increment,
+	tipo varchar(15)
+);
+
+
 
 create table municipio(
 	id bigint primary key auto_increment,
-    municipio varchar(25)
+    municipio varchar(25),
+    id_departamento bigint
 );
 
 create table Evento(
@@ -68,8 +75,7 @@ create table cantidad_boletas(
 
 create table artistas(
 	id int primary key auto_increment,
-    nombres varchar(25),
-    apellido varchar(25),
+    nombre varchar(25),
     genero_musical varchar(20),
     ciudad_natal varchar(20),
     id_evento bigint,
@@ -114,3 +120,56 @@ create table compra(
     estado varchar(20),
 	constraint foreign key (id_transaccion) references transaccion(id)
 );
+
+create table departamento(
+	id bigint primary key auto_increment,
+    departamento varchar(20)
+);
+
+
+-- Insertar datos de ejemplo para departamentos
+INSERT INTO departamento (departamento) VALUES 
+('Valle del Cauca'),
+('Cundinamarca'),
+('Antioquia'),
+('Atlántico'),
+('Santander');
+
+-- Insertar datos de ejemplo para municipios
+INSERT INTO municipio (municipio, id_departamento) VALUES 
+('Cali', 1),
+('Palmira', 1),
+('Buenaventura', 1),
+('Bogotá', 2),
+('Soacha', 2),
+('Medellín', 3),
+('Bello', 3),
+('Barranquilla', 4),
+('Soledad', 4),
+('Bucaramanga', 5),
+('Floridablanca', 5);
+
+-- Insertar datos de ejemplo para tipo de documento
+INSERT INTO Tipo_Documento (documento) VALUES 
+('Cédula de Ciudadanía'),
+('Cédula de Extranjería'),
+('Pasaporte'),
+('Tarjeta de Identidad');
+
+-- Insertar datos de ejemplo para administrador
+INSERT INTO administrador (num_documento, tipo_documento, nombres, apellidos, correo, contrasena) VALUES 
+(1024480167, 1, 'Admin', 'Principal', 'admin@ferias.com', 'admin123');
+
+-- Insertar datos de ejemplo para localidades
+INSERT INTO localidad (localidada) VALUES 
+('VIP'),
+('Platea'),
+('General'),
+('Palco'),
+('Tribuna');
+
+ALTER TABLE municipio
+ADD CONSTRAINT fk_municipio_departamento
+FOREIGN KEY (id_departamento)
+REFERENCES departamento(id);
+

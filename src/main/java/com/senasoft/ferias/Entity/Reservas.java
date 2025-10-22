@@ -14,21 +14,29 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="municipio")
+@Table(name = "reservas")
 @Data
-public class Municipio {
+public class Reservas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="municipio")
-    private String municipio;
+    @Column(name = "valor")
+    private Double valor;
 
     @ManyToOne
-    @JoinColumn(name = "id_departamento")
-    private Departamento departamento;
+    @JoinColumn(name = "id_boletas")
+    private Boletas boletas;
 
-    @OneToMany(mappedBy = "municipio")
-    private List<Evento> eventos;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_evento")
+    private Evento evento;
+
+    @OneToMany(mappedBy = "reserva")
+    private List<Transaccion> transacciones;
 }

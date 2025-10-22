@@ -1,5 +1,6 @@
 package com.senasoft.ferias.Entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -14,21 +15,31 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="municipio")
+@Table(name = "boletas")
 @Data
-public class Municipio {
+public class Boletas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="municipio")
-    private String municipio;
+    @Column(name = "valor")
+    private Double valor;
+
+    @Column(name = "fecha")
+    private LocalDate fecha;
+
+    @Column(name = "cantidad")
+    private Integer cantidad;
 
     @ManyToOne
-    @JoinColumn(name = "id_departamento")
-    private Departamento departamento;
+    @JoinColumn(name = "id_localidad")
+    private Localidad localidad;
 
-    @OneToMany(mappedBy = "municipio")
-    private List<Evento> eventos;
+    @ManyToOne
+    @JoinColumn(name = "id_evento")
+    private Evento evento;
+
+    @OneToMany(mappedBy = "boletas")
+    private List<Reservas> reservas;
 }

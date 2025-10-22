@@ -36,11 +36,6 @@ public class WebEventoController {
         this.administradorRepository = administradorRepository;
     }
 
-    @GetMapping("/administrador")
-    public String index(Model model) {
-        model.addAttribute("municipios", municipioRepository.findAll());
-        return "administrador/administrador";
-    }
 
     @GetMapping("/eventos/{id}/editar")
     public String editarEventoForm(@PathVariable Long id, Model model) {
