@@ -19,7 +19,7 @@
          <input type="submit" value="Buscar">
       </form>
       <a th:href="@{/login}" href="/login">Iniciar Sesión</a>
-      <a th:href="@{/administrador}" href="/administrador">Admin</a>
+      <a th:href="@{/administrador}" href="/src/main/resources/templates/usuario/usuario.html">Admin</a>
     </nav>
   </header>
 
@@ -71,16 +71,6 @@
     </div>
   </main>
 
-  <script>
-    function verDetalles(eventoId) {
-      // Implementar lógica para ver detalles del evento
-      alert('Ver detalles del evento: ' + eventoId);
-    }
-
-    function comprarBoletas(eventoId) {
-      // Implementar lógica para comprar boletas
-      alert('Comprar boletas para el evento: ' + eventoId);
-    }
-  </script>
+  <script th:src="@{/js/login.js}" src="/src/main/resources/static/js/login.js"></script>
 </body>
 </html>

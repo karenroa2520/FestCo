@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compra de Boletas</title>
+  <link rel="stylesheet" href="/src/main/resources/static/css/boletas.css">
+</head>
+<body>
+  <div class="contenedor">
+    <h1>🎟️ Compra de Boletas</h1>
+
+    <form id="formBoleta" class="formulario">
+      <div class="campo">
+        <label for="idEvento">Evento:</label>
+        <select id="idEvento" required>
+          <option value="">Selecciona un evento</option>
+          <option value="1">Festival de Música</option>
+          <option value="2">Feria Gastronómica</option>
+          <option value="3">Carrera 5K</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="cantidad">Cantidad de boletas:</label>
+        <input type="number" id="cantidad" min="1" placeholder="Ej: 2" required>
+      </div>
+
+      <div class="campo">
+        <label for="precio">Precio por boleta:</label>
+        <input type="number" id="precio" value="30000" readonly>
+      </div>
+
+      <div class="campo total">
+        <label>Total a pagar:</label>
+        <span id="total">$0</span>
+      </div>
+
+      <button type="submit" class="btn-comprar">Comprar</button>
+    </form>
+
+    <div id="mensaje" class="mensaje"></div>
+  </div>
+
+  <script src="/src/main/resources/static/js/boletas.js"></script>
+</body>
+</html>
