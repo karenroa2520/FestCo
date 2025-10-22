@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FESTCO - Registro e Inicio</title>
+  <link rel="stylesheet" href="/src/main/resources/static/css/login_estilos.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="logo">
+      <div class="logo-circle"></div>
+      <h1>FESTCO</h1>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-form="login">Iniciar Sesión</button>
+      <button class="tab-btn" data-form="register">Registrarse</button>
+    </div>
+
+    <form id="login-form" class="auth-form active">
+      <h2>¡Bienvenido de nuevo!</h2>
+      <div class="input-field">
+        <input type="email" id="login-email" required />
+        <label for="login-email">Correo electrónico</label>
+      </div>
+      <div class="input-field">
+        <input type="password" id="login-password" required />
+        <label for="login-password">Contraseña</label>
+      </div>
+      <button type="submit" class="btn">Entrar</button>
+    </form>
+
