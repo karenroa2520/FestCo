@@ -30,4 +30,50 @@
       </div>
       <button type="submit" class="btn">Entrar</button>
     </form>
+        <form id="register-form" class="auth-form">
+      <h2>Crea tu cuenta</h2>
+
+      <div class="input-field">
+        <select id="doc-type" required>
+          <option value="">Tipo de documento</option>
+          <option value="cc">Cédula de Ciudadanía</option>
+          <option value="ti">Tarjeta de Identidad</option>
+          <option value="ce">Cédula de Extranjería</option>
+          <option value="pasaporte">Pasaporte</option>
+        </select>
+        <label for="doc-type">Tipo de documento</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" id="doc-number" required />
+        <label for="doc-number">Número de documento</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" id="full-name" required />
+        <label for="full-name">Nombre completo</label>
+      </div>
+
+      <div class="input-field">
+        <input type="email" id="email" required />
+        <label for="email">Correo electrónico</label>
+      </div>
+
+      <div class="input-field">
+        <input type="tel" id="phone" required />
+        <label for="phone">Teléfono</label>
+      </div>
+
+      <div class="input-field">
+        <input type="password" id="password" required />
+        <label for="password">Crear contraseña</label>
+      </div>
+
+      <button type="submit" class="btn">Registrarse</button>
+    </form>
+  </div>
+
+  <script src="/src/main/resources/static/js/login.js"></script>
+</body>
+</html>
 
