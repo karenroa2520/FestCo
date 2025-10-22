@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FESTCO - Registro e Inicio</title>
-  <link rel="stylesheet" href="/src/main/resources/static/css/login_estilos.css" />
+  <link rel="stylesheet" th:href="@{/css/login_estilos.css}" href="/css/login_estilos.css" />
 </head>
 <body>
   <div class="auth-container">
@@ -36,10 +36,10 @@
       <div class="input-field">
         <select id="doc-type" required>
           <option value="">Tipo de documento</option>
-          <option value="cc">Cédula de Ciudadanía</option>
-          <option value="ti">Tarjeta de Identidad</option>
-          <option value="ce">Cédula de Extranjería</option>
-          <option value="pasaporte">Pasaporte</option>
+          <option value="1">Cédula de Ciudadanía</option>
+          <option value="2">Cédula de Extranjería</option>
+          <option value="3">Pasaporte</option>
+          <option value="4">Tarjeta de Identidad</option>
         </select>
         <label for="doc-type">Tipo de documento</label>
       </div>
@@ -73,7 +73,7 @@
     </form>
   </div>
 
-  <script src="/src/main/resources/static/js/login.js"></script>
+  <script th:src="@{/js/login.js}" src="/js/login.js"></script>
 </body>
 </html>
 

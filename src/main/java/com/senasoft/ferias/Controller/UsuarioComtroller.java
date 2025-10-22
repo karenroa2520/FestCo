@@ -172,7 +172,7 @@ public class UsuarioComtroller {
 
 
     // Obtener tipos de documento
-    @PostMapping("/tipos-documento")
+    @GetMapping("/tipos-documento")
     public ResponseEntity<Map<String, Object>> obtenerTiposDocumento() {
         Map<String, Object> response = new HashMap<>();
         

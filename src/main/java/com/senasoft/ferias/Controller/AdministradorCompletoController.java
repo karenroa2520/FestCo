@@ -34,6 +34,16 @@ public class AdministradorCompletoController {
     @Autowired
     private Administrador_Repository administradorRepository;
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/usuario")
+    public String usuario() {
+        return "usuario/usuario";
+    }
+
     @GetMapping("/administrador")
     public String administradorPage(Model model) {
         model.addAttribute("departamentos", eventoCompletoService.getAllDepartamentos());

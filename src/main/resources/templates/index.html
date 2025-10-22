@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FestCo</title>
 
-  <link rel="stylesheet" th:href="@{/css/esilos_pagina_principal.css}" href="/src/main/resources/static/css/pagina_prin.css">
+  <link rel="stylesheet" th:href="@{/css/pagina_prin.css}" href="/css/pagina_prin.css">
 
 </head>
 <body>
@@ -19,7 +19,7 @@
     <nav>
       <a href="#" class="active">Inicio</a>
       <!-- Enlace al controlador que sirve la página index -->
-      <a th:href="@{/}" href="/src/main/resources/templates/usuario/usuario.html">Iniciar Sesion</a>
+      <a th:href="@{/usuario}" href="/usuario">Iniciar Sesion</a>
 
     </nav>
   </header>
@@ -27,5 +27,6 @@
   <section class="hero">
     <div class="cards">
 
+  <script th:src="@{/js/index.js}" src="/js/index.js"></script>
 </body>
 </html>
