@@ -14,14 +14,14 @@ import com.senasoft.ferias.Entity.Artista;
 import com.senasoft.ferias.Entity.Departamento;
 import com.senasoft.ferias.Entity.Localidad;
 import com.senasoft.ferias.Entity.Municipio;
-import com.senasoft.ferias.service.EventoCompleto_Service;
+import com.senasoft.ferias.service.Evento_Service;
 
 @RestController
 @RequestMapping("/api")
 public class ApiController {
 
     @Autowired
-    private EventoCompleto_Service eventoCompletoService;
+    private Evento_Service eventoCompletoService;
 
     @GetMapping("/departamentos")
     public List<Departamento> getAllDepartamentos() {

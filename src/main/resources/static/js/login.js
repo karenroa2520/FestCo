@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabButtons = document.querySelectorAll('.tab-btn');
   const forms = document.querySelectorAll('.auth-form');
 
+  // Manejo de pestañas
   tabButtons.forEach(button => {
     button.addEventListener('click', () => {
       // Remover clase activa de todos
