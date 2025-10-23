@@ -20,7 +20,7 @@ public class Localidad {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "localidada")
+    @Column(name = "localidad")
     private String localidad;
 
     @OneToMany(mappedBy = "localidad")

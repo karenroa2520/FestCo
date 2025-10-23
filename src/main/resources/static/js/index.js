@@ -59,3 +59,15 @@ function cerrarSesion() {
   // Recargar la página
   window.location.reload();
 }
+
+
+
+    function verDetalles(eventoId) {
+      // Implementar lógica para ver detalles del evento
+      alert('Ver detalles del evento: ' + eventoId);
+    }
+
+    function comprarBoletas(eventoId) {
+      // Implementar lógica para comprar boletas
+      alert('Comprar boletas para el evento: ' + eventoId);
+    }
